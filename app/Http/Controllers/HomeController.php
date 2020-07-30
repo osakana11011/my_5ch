@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use App\Mail\SampleMail;
+use Mail;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
