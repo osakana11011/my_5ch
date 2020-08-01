@@ -10984,3 +10984,9 @@ Author: Alicia Liu
   padding: 0 10px;
 }
 
+.category__item {
+  background-color: #ffefd5;
+  padding: 0.3rem;
+  margin: 0.3rem;
+}
+

@@ -14,6 +14,7 @@ final class Thread
     public $title;
     public $parentThreadID;
     public $resList;
+    public $categoryList;
 
     public function __construct(ThreadTitle $title, ?ThreadID $threadID=null, ?ThreadID $parentThreadID=null)
     {

@@ -12,3 +12,11 @@
         padding: 0 10px;
     }
 }
+
+.category {
+    &__item {
+        background-color: #ffefd5;
+        padding: 0.3rem;
+        margin: 0.3rem;
+    }
+}

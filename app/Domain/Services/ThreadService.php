@@ -6,6 +6,7 @@ namespace App\Domain\Services;
 use App\Domain\Services\CategoryService;
 use App\Domain\Repositories\IThreadRepository;
 use App\Domain\Repositories\IResRepository;
+use App\Domain\Repositories\ICategoryRepository;
 use App\Domain\Models\Entities\Thread;
 use App\Domain\Models\ValueObject\Thread\ThreadID;
 use App\Domain\Models\ValueObject\Thread\ThreadTitle;
@@ -15,12 +16,14 @@ final class ThreadService
     private $categoryService;
     private $threadRepository;
     private $resRepository;
+    private $categoryRepository;
 
-    public function __construct(CategoryService $categoryService, IThreadRepository $threadRepository, IResRepository $resRepository)
+    public function __construct(CategoryService $categoryService, IThreadRepository $threadRepository, IResRepository $resRepository, ICategoryRepository $categoryRepository)
     {
         $this->categoryService = $categoryService;
         $this->threadRepository = $threadRepository;
         $this->resRepository = $resRepository;
+        $this->categoryRepository = $categoryRepository;
     }
 
     /**
@@ -44,6 +47,7 @@ final class ThreadService
         $threadID = new ThreadID($id);
         $thread = $this->threadRepository->getByID($threadID);
         $thread->resList = $this->resRepository->getByThreadID($threadID);
+        $thread->categoryList = $this->categoryRepository->getByThreadID($threadID);
         return $thread;
     }
 

@@ -4,6 +4,12 @@
     <a href="/threads">一覧へ</a>
     <h1>{{ $thread->title->value }}</h1>
 
+    <div class="category">
+        @foreach ($thread->categoryList as $category)
+            <span class="category__item">{{ $category->name->value }}</span>
+        @endforeach
+    </div>
+
     @foreach ($thread->resList as $i => $res)
         <div class="res">
             <div class="res__header">
