@@ -11,5 +11,5 @@ interface IThreadRepository
 {
     public function getList(): array;
     public function getByID(ThreadID $threadID): Thread;
-    public function create(ThreadTitle $threadTitle): void;
+    public function create(ThreadTitle $threadTitle): Thread;
 }

@@ -60,13 +60,14 @@ final class ThreadService
     {
         // スレッドの作成
         $threadTitle = new ThreadTitle($threadTitle);
-        $this->threadRepository->create($threadTitle);
+        $thread = $this->threadRepository->create($threadTitle);
 
         // カテゴリの作成・スレッドとの紐付け
         collect(explode(',', $categories))
             ->unique()
-            ->each(function ($categoryName) {
-                $this->categoryService->createCategory($categoryName);
+            ->each(function ($categoryName) use ($thread) {
+                $category = $this->categoryService->createCategory($categoryName);
+                $this->categoryRepository->associate($thread->id, $category->id);
             });
     }
 }

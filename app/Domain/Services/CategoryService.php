@@ -22,10 +22,10 @@ final class CategoryService
      *
      * @param string $categoryName
      */
-    public function createCategory(string $categoryName): void
+    public function createCategory(string $categoryName): Category
     {
         $categoryName = new CategoryName($categoryName);
         $category = new Category($categoryName);
-        $this->categoryRepository->create($category);
+        return $this->categoryRepository->create($category);
     }
 }

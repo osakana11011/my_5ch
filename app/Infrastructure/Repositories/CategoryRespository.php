@@ -18,10 +18,26 @@ final class CategoryRepository implements ICategoryRepository
      * カテゴリデータを永続化ボリュームに作成する。
      *
      * @param Category $category
+     * @return Category
      */
-    public function create(Category $category): void
+    public function create(Category $category): Category
     {
-        PersistantCategory::firstOrCreate(['name' => $category->name->value], ['name' => $category->name->value]);
+        $categoryRecord = PersistantCategory::firstOrCreate(['name' => $category->name->value], ['name' => $category->name->value]);
+        return $this->translatePersistantToDomainModel($categoryRecord);
+    }
+
+    /**
+     * スレッドとカテゴリを紐づける。
+     *
+     * @param ThreadID $threadID
+     * @param CategoryID $categoryID
+     */
+    public function associate(ThreadID $threadID, CategoryID $categoryID): void
+    {
+        PersistantCategorizing::firstOrCreate(
+            ['thread_id' => $threadID->value, 'category_id' => $categoryID->value],
+            ['thread_id' => $threadID->value, 'category_id' => $categoryID->value]
+        );
     }
 
     /**

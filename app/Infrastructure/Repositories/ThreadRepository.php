@@ -41,12 +41,15 @@ final class ThreadRepository implements IThreadRepository
      * スレッドタイトルを受け取り、スレッドを作成する。
      *
      * @param ThreadTitle $threadTitle
+     * @return Thread
      */
-    public function create(ThreadTitle $threadTitle): void
+    public function create(ThreadTitle $threadTitle): Thread
     {
-        PersistantThread::create([
+        $threadRecord = PersistantThread::create([
             'title' => $threadTitle->value,
         ]);
+
+        return $this->translatePersistantToDomainModel($threadRecord);
     }
 
     /**
