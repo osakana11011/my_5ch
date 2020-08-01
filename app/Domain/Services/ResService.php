@@ -26,7 +26,7 @@ final class ResService
      * @param string $submitterName
      * @param string $content
      */
-    public function createRes(int $threadID, string $submitterName, string $content): void
+    public function createRes(int $threadID, ?string $submitterName, string $content): void
     {
         $_threadID = new ThreadID($threadID);
         $resSubmitterName = new ResSubmitterName($submitterName);
