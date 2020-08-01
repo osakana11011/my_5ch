@@ -7,6 +7,8 @@ use App\Domain\Repositories\IThreadRepository;
 use App\Infrastructure\Repositries\ThreadRepository;
 use App\Domain\Repositories\IResRepository;
 use App\Infrastructure\Repositries\ResRepository;
+use App\Domain\Repositories\ICategoryRepository;
+use App\Infrastructure\Repositries\CategoryRepository;
 use Carbon\Carbon;
 
 
@@ -27,6 +29,9 @@ class AppServiceProvider extends ServiceProvider
         });
         $this->app->singleton(IResRepository::class, function ($app) {
             return new ResRepository();
+        });
+        $this->app->singleton(ICategoryRepository::class, function ($app) {
+            return new CategoryRepository();
         });
     }
 
