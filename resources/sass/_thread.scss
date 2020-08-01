@@ -1,0 +1,14 @@
+.res {
+    background-color: #fff;
+    padding: 1.0rem;
+    margin: 1.0rem;
+    box-sizing: border-box;
+
+    &__header {
+        font-weight: bold;
+    }
+
+    &__content {
+        padding: 0 10px;
+    }
+}

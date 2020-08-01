@@ -22,7 +22,9 @@ final class ResService
     /**
      * スレッドにレスを投稿する。
      *
-     * @
+     * @param int $threadID
+     * @param string $submitterName
+     * @param string $content
      */
     public function createRes(int $threadID, string $submitterName, string $content): void
     {

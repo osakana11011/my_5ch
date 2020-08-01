@@ -7,6 +7,7 @@ use App\Domain\Repositories\IThreadRepository;
 use App\Infrastructure\Repositries\ThreadRepository;
 use App\Domain\Repositories\IResRepository;
 use App\Infrastructure\Repositries\ResRepository;
+use Carbon\Carbon;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +19,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        setlocale(LC_ALL, 'ja_JP.UTF-8');
+        Carbon::setLocale(config('app.locale'));
+
         $this->app->singleton(IThreadRepository::class, function ($app) {
             return new ThreadRepository();
         });

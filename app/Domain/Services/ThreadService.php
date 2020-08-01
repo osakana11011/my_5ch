@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Domain\Services;
 
 use App\Domain\Repositories\IThreadRepository;
+use App\Domain\Repositories\IResRepository;
 use App\Domain\Models\Entities\Thread;
 use App\Domain\Models\ValueObject\Thread\ThreadID;
 use App\Domain\Models\ValueObject\Thread\ThreadTitle;
@@ -11,10 +12,12 @@ use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 final class ThreadService
 {
     private $threadRepository;
+    private $resRepository;
 
-    public function __construct(IThreadRepository $threadRepository)
+    public function __construct(IThreadRepository $threadRepository, IResRepository $resRepository)
     {
         $this->threadRepository = $threadRepository;
+        $this->resRepository = $resRepository;
     }
 
     /**
@@ -36,7 +39,9 @@ final class ThreadService
     public function getByID(int $id): Thread
     {
         $threadID = new ThreadID($id);
-        return $this->threadRepository->getByID($threadID);
+        $thread = $this->threadRepository->getByID($threadID);
+        $thread->resList = $this->resRepository->getByThreadID($threadID);
+        return $thread;
     }
 
     /**

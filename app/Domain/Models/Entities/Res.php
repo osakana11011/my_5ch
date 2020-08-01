@@ -25,4 +25,9 @@ final class Res
         $this->id = $resID;
         $this->postedAt = $postedAt;
     }
+
+    public function getFormattedPostedAt(): string
+    {
+        return $this->postedAt->isoFormat('YYYY/MM/DD(ddd) HH:mm:ss');
+    }
 }
