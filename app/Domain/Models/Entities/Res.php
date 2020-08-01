@@ -17,7 +17,7 @@ final class Res
     public $content;
     public $postedAt;
 
-    public function __construct(ThreadID $threadID, ResContent $content, ?ResSubmitterName $submitterName=null, ?ResID $resID=null, ?Carbon $postedAt=null)
+    public function __construct(ThreadID $threadID, ResContent $content, ResSubmitterName $submitterName=null, ?ResID $resID=null, ?Carbon $postedAt=null)
     {
         $this->threadID = $threadID;
         $this->content = $content;

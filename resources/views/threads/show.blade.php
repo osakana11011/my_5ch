@@ -8,7 +8,7 @@
         <div class="res">
             <div class="res__header">
             <span>{{ $i+1 }}</span>
-                <span>{{ $res->submitterName->value }}</span>
+                <span>{{ $res->submitterName->getName() }}</span>
             <span>{{ $res->getFormattedPostedAt() }}</span>
             </div>
             <div class="res__content">
