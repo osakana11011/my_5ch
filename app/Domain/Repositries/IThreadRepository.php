@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Domain\Repositories;
 
 use App\Domain\Models\Entities\Thread;
-use App\Domain\Models\ValueObject\ThreadID;
-use App\Domain\Models\ValueObject\ThreadTitle;
+use App\Domain\Models\ValueObject\Thread\ThreadID;
+use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 
 interface IThreadRepository
 {

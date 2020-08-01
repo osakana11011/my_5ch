@@ -5,6 +5,8 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use App\Domain\Repositories\IThreadRepository;
 use App\Infrastructure\Repositries\ThreadRepository;
+use App\Domain\Repositories\IResRepository;
+use App\Infrastructure\Repositries\ResRepository;
 
 
 class AppServiceProvider extends ServiceProvider
@@ -18,6 +20,9 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->singleton(IThreadRepository::class, function ($app) {
             return new ThreadRepository();
+        });
+        $this->app->singleton(IResRepository::class, function ($app) {
+            return new ResRepository();
         });
     }
 

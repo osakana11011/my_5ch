@@ -5,8 +5,8 @@ namespace App\Domain\Services;
 
 use App\Domain\Repositories\IThreadRepository;
 use App\Domain\Models\Entities\Thread;
-use App\Domain\Models\ValueObject\ThreadID;
-use App\Domain\Models\ValueObject\ThreadTitle;
+use App\Domain\Models\ValueObject\Thread\ThreadID;
+use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 
 final class ThreadService
 {

@@ -4,8 +4,8 @@ declare(strict_types=1);
 namespace App\Domain\Models\Entities;
 
 
-use App\Domain\Models\ValueObject\ThreadID;
-use App\Domain\Models\ValueObject\ThreadTitle;
+use App\Domain\Models\ValueObject\Thread\ThreadID;
+use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 
 
 final class Thread
@@ -21,4 +21,3 @@ final class Thread
         $this->parentThreadID = $parentThreadID;
     }
 }
-

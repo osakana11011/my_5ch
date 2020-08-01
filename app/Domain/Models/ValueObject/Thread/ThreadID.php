@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Domain\Models\ValueObject;
+namespace App\Domain\Models\ValueObject\Thread;
 
 use Exception;
 

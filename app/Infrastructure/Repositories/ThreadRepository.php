@@ -5,8 +5,8 @@ namespace App\Infrastructure\Repositries;
 
 use App\Infrastructure\Database\Thread as PersistantThread;
 use App\Domain\Models\Entities\Thread;
-use App\Domain\Models\ValueObject\ThreadID;
-use App\Domain\Models\ValueObject\ThreadTitle;
+use App\Domain\Models\ValueObject\Thread\ThreadID;
+use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 use App\Domain\Repositories\IThreadRepository;
 
 
