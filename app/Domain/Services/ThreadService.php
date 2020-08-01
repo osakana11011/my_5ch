@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Domain\Services;
 
+use App\Domain\Services\CategoryService;
 use App\Domain\Repositories\IThreadRepository;
 use App\Domain\Repositories\IResRepository;
 use App\Domain\Models\Entities\Thread;
@@ -11,11 +12,13 @@ use App\Domain\Models\ValueObject\Thread\ThreadTitle;
 
 final class ThreadService
 {
+    private $categoryService;
     private $threadRepository;
     private $resRepository;
 
-    public function __construct(IThreadRepository $threadRepository, IResRepository $resRepository)
+    public function __construct(CategoryService $categoryService, IThreadRepository $threadRepository, IResRepository $resRepository)
     {
+        $this->categoryService = $categoryService;
         $this->threadRepository = $threadRepository;
         $this->resRepository = $resRepository;
     }
@@ -49,9 +52,17 @@ final class ThreadService
      *
      * @param string $threadTitle
      */
-    public function createThread(string $threadTitle): void
+    public function createThread(string $threadTitle, string $categories): void
     {
+        // スレッドの作成
         $threadTitle = new ThreadTitle($threadTitle);
         $this->threadRepository->create($threadTitle);
+
+        // カテゴリの作成・スレッドとの紐付け
+        collect(explode(',', $categories))
+            ->unique()
+            ->each(function ($categoryName) {
+                $this->categoryService->createCategory($categoryName);
+            });
     }
 }

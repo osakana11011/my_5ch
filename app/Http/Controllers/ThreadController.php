@@ -37,8 +37,10 @@ class ThreadController extends Controller
      */
     public function store(ThreadRequest $request)
     {
-        $title = $request->input('title');
-        $this->threadService->createThread($title);
+        $this->threadService->createThread(
+            $request->input('title'),
+            $request->input('categories')
+        );
 
         return redirect('threads');
     }

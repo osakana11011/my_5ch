@@ -5,6 +5,9 @@
  */
 
 require('./bootstrap');
+require('./jquery-ui');
+require('./jquery.tagify');
+require('./thread');
 
 window.Vue = require('vue');
 
