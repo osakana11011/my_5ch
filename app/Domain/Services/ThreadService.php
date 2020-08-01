@@ -4,6 +4,8 @@ declare(strict_types=1);
 namespace App\Domain\Services;
 
 use App\Domain\Repositories\IThreadRepository;
+use App\Domain\Models\Entities\Thread;
+use App\Domain\Models\ValueObject\ThreadID;
 use App\Domain\Models\ValueObject\ThreadTitle;
 
 final class ThreadService
@@ -23,6 +25,18 @@ final class ThreadService
     public function getThreads(): array
     {
         return $this->threadRepository->getList();
+    }
+
+    /**
+     * IDからスレッドを取得する。
+     *
+     * @param int $id
+     * @return Thread
+     */
+    public function getByID(int $id): Thread
+    {
+        $threadID = new ThreadID($id);
+        return $this->threadRepository->getByID($threadID);
     }
 
     /**

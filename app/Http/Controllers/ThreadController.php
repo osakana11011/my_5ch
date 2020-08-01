@@ -42,4 +42,13 @@ class ThreadController extends Controller
 
         return redirect('threads');
     }
+
+    /**
+     * スレッドを表示する
+     */
+    public function show($id)
+    {
+        $thread = $this->threadService->getByID($id);
+        return view('threads.show', compact('thread'));
+    }
 }

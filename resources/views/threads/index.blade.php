@@ -5,7 +5,7 @@
     <table>
         <tr><th>スレッド名</th></tr>
         @foreach ($threads as $thread)
-            <tr><td>{{ $thread->title->value }}</td></tr>
+            <tr><td><a href="{{ route('threads.show', $thread->id->value) }}">{{ $thread->title->value }}</a></td></tr>
         @endforeach
     </table>
 @endsection
