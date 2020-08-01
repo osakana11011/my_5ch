@@ -13,6 +13,19 @@ use App\Domain\Repositories\IThreadRepository;
 final class ThreadRepository implements IThreadRepository
 {
     /**
+     * スレッドの一覧を取得する。
+     *
+     * @return array
+     */
+    public function getList(): array
+    {
+        $threadRecords = PersistantThread::get();
+        return $threadRecords->map(function ($threadRecord) {
+            return $this->translatePersistantToDomainModel($threadRecord);
+        })->toArray();
+    }
+
+    /**
      * IDからスレッドを検索し返す。
      *
      * @param ThreadID $threadID
