@@ -36,6 +36,7 @@ final class ThreadService
         $threads = collect($this->threadRepository->getList())
             ->map(function ($thread) {
                 $thread->resList = $this->resRepository->getByThreadID($thread->id);
+                $thread->categoryList = $this->categoryRepository->getByThreadID($thread->id);
                 return $thread;
             })
             ->filter(function ($thread) {

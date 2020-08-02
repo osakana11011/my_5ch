@@ -7,6 +7,11 @@
         <a href="{{ route('threads.show', $thread->id->value) }}" class="thread-panel__link">
             <div class="thread-panel">
                 <div class="thread-panel__title">{{ $thread->title->value }}</div>
+                <div class="category">
+                    @foreach ($thread->categoryList as $category)
+                        <span class="category__item">{{ $category->name->value }}</span>
+                    @endforeach
+                </div>
                 <hr>
                 <div class="thread-panel__content">{{ $thread->resList[0]->content->value }}</div>
                 <div class="thread-panel__meta">
