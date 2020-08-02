@@ -1,3 +1,25 @@
+.required {
+    &::after {
+        content: '*';
+        color: #dc143c;
+    }
+}
+
+.create-form {
+    margin: 0 auto;
+    padding: 1.0rem;
+    background: #fff;
+
+    &__item {
+        margin: 10px 0;
+    }
+
+    &__title {
+        font-weight: bold;
+
+    }
+}
+
 .res {
     background-color: #fff;
     padding: 1.0rem;

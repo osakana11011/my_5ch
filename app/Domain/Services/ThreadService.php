@@ -66,6 +66,7 @@ final class ThreadService
         collect(explode(',', $categories))
             ->unique()
             ->each(function ($categoryName) use ($thread) {
+                if (empty($categoryName)) return;
                 $category = $this->categoryService->createCategory($categoryName);
                 $this->categoryRepository->associate($thread->id, $category->id);
             });

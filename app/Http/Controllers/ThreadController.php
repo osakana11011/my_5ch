@@ -39,7 +39,7 @@ class ThreadController extends Controller
     {
         $this->threadService->createThread(
             $request->input('title'),
-            $request->input('categories')
+            $request->input('categories') ?? ''
         );
 
         return redirect('threads');
