@@ -19,7 +19,9 @@ if (env('APP_ENV') === 'production') {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function () {
+    return redirect(route('threads'));
+});
 
 Route::get('/threads', 'ThreadController@index')->name('threads');
 Route::get('/threads/create', 'ThreadController@create')->name('threads.create');

@@ -1,7 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
-    <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+    @if (!empty(Auth::user()))
+        <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+    @endif
 
     @foreach ($threads as $thread)
         <a href="{{ route('threads.show', $thread->id->value) }}" class="thread-panel__link">

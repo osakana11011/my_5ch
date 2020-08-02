@@ -27,7 +27,7 @@
         </div>
     @endforeach
 
-    @if ($thread->isEnablePostRes())
+    @if (!empty(Auth::user()) && $thread->isEnablePostRes())
         <div class="create-form">
             <div class="create-form__title">【スレッドに書き込む】</div>
             <form action="{{ route('threads.res.store', $thread->id->value) }}" method="POST">
@@ -50,5 +50,8 @@
                 <input type="submit" class="btn btn-primary" value="書き込む">
             </form>
         </div>
+    @endif
+    @if (empty(Auth::user()))
+        <div class="caution">スレッドにレスを投稿するには、ログインを行ってください。</div>
     @endif
 @endsection
