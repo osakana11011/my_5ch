@@ -57,3 +57,34 @@
         margin: 0.3rem;
     }
 }
+
+.thread-panel {
+    background-color: #fff;
+    padding: 1.0rem;
+    margin: 30px auto;
+    border-radius: 5px;
+
+    &__link {
+        color: #222;
+        text-decoration: none;
+        &:hover {
+            color: #222;
+            text-decoration: none;
+        }
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    &__content {
+        padding: 0.5rem;
+        margin: 1.0rem;
+    }
+    &__meta {
+        display: flex;
+        justify-content: flex-end;
+        &--item {
+            margin-left: 30px;
+        }
+    }
+}

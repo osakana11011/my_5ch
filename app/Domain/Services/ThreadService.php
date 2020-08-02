@@ -33,7 +33,16 @@ final class ThreadService
      */
     public function getThreads(): array
     {
-        return $this->threadRepository->getList();
+        $threads = collect($this->threadRepository->getList())
+            ->map(function ($thread) {
+                $thread->resList = $this->resRepository->getByThreadID($thread->id);
+                return $thread;
+            })
+            ->filter(function ($thread) {
+                return !empty($thread->resList);
+            })
+            ->toArray();
+        return $threads;
     }
 
     /**
