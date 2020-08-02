@@ -13,6 +13,8 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+@import 'setting/config';
+
 @import 'common';
 @import 'tagify-style';
 @import 'thread';

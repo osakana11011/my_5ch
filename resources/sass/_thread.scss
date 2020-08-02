@@ -95,8 +95,10 @@
         position: relative;
     }
     &__input {
-        width: 400px;
         padding-right: 50px;
+        @include mq('pc') {
+            width: 400px;
+        }
     }
     &__icon {
         color: #555;

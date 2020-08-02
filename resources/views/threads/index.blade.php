@@ -8,7 +8,7 @@
     <div class="search-box">
         <form action="{{ route('threads') }}">
             <div class="search-box__form">
-                <input name="q" type="text" class="form-control search-box__input">
+                <input name="q" type="text" class="form-control search-box__input" placeholder="検索未実装">
                 <i class="fa fa-search search-box__icon" aria-hidden="true"></i>
             </div>
         </form>

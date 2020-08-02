@@ -1,0 +1,10 @@
+// メディアクエリ
+$breakpoints: (
+    'pc': 'screen and (min-width: 897px)',
+) !default;
+
+@mixin mq($breakpoint: 'pc') {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

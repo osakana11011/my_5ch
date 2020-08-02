@@ -17177,8 +17177,13 @@ Author: Alicia Liu
 }
 
 .search-box__input {
-  width: 400px;
   padding-right: 50px;
+}
+
+@media screen and (min-width: 897px) {
+  .search-box__input {
+    width: 400px;
+  }
 }
 
 .search-box__icon {
