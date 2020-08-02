@@ -94,9 +94,12 @@
     justify-content: flex-end;
     &__form {
         position: relative;
+        height: calc(1.6em + 0.75rem + 2px);
     }
     &__input {
+        position: absolute;
         padding-right: 50px;
+        right: 0;
         @include mq('pc') {
             width: 400px;
         }
