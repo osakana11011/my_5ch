@@ -16,10 +16,32 @@ final class Thread
     public $resList;
     public $categoryList;
 
+    const MAX_RES_NUMBER = 100;
+
     public function __construct(ThreadTitle $title, ?ThreadID $threadID=null, ?ThreadID $parentThreadID=null)
     {
         $this->title = $title;
         $this->id = $threadID;
         $this->parentThreadID = $parentThreadID;
+    }
+
+    /**
+     * スレッドにレスを投稿できるかどうか
+     *
+     * @return boolean
+     */
+    public function isEnablePostRes()
+    {
+        return (count($this->resList) < self::MAX_RES_NUMBER);
+    }
+
+    /**
+     * 1つのスレッドに投稿できるレスの件数を取得する。
+     *
+     * @return int
+     */
+    public function getMaxResNumber()
+    {
+        return self::MAX_RES_NUMBER;
     }
 }
