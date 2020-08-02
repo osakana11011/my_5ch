@@ -16,7 +16,7 @@ final class ThreadTitle
 
     public function __construct(string $title)
     {
-        if (empty($title) || mb_strlen($title) > 30) {
+        if (empty($title) || mb_strlen($title) > 100) {
             throw new Exception("title: ${title} is invalidate.");
         }
 

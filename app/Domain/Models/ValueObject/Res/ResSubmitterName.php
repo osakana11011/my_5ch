@@ -18,7 +18,7 @@ final class ResSubmitterName
 
     public function __construct(?string $submitterName)
     {
-        if (!is_null($submitterName) && mb_strlen($submitterName) > 20) {
+        if (!is_null($submitterName) && mb_strlen($submitterName) > 30) {
             throw new Exception("submitterName: ${submitterName} is invalidate.");
         }
 

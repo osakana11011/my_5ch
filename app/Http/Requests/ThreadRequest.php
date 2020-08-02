@@ -24,7 +24,9 @@ class ThreadRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => 'required|max:30',
+            'title' => 'required|max:100',
+            'submitter_name' => 'max:30',
+            'content' => 'required|max:200',
         ];
     }
 }
