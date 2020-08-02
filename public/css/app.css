@@ -17168,6 +17168,7 @@ Author: Alicia Liu
 }
 
 .search-box {
+  margin: 10px auto;
   display: flex;
   justify-content: flex-end;
 }
