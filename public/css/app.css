@@ -17155,8 +17155,7 @@ Author: Alicia Liu
 }
 
 .thread-panel__content {
-  padding: 0.5rem;
-  margin: 1rem;
+  padding: 0.2rem 0;
 }
 
 .thread-panel__meta {
