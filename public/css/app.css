@@ -17079,6 +17079,11 @@ Author: Alicia Liu
   color: #dc143c;
 }
 
+.create-thread {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .caution {
   border: 1px solid #dc143c;
   border-radius: 5px;

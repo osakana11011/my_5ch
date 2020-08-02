@@ -2,7 +2,9 @@
 
 @section('content')
     @auth
-        <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+        <div class="create-thread">
+            <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+        </div>
     @endauth
 
     <div class="search-box">
