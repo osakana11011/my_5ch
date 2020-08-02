@@ -10978,6 +10978,12 @@ Author: Alicia Liu
   color: #dc143c;
 }
 
+.thread-title {
+  font-weight: bold;
+  font-size: 1.2rem;
+  word-break: break-all;
+}
+
 .create-form {
   margin: 0 auto;
   padding: 1rem;
@@ -10994,8 +11000,8 @@ Author: Alicia Liu
 
 .res {
   background-color: #fff;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 10px;
+  margin: 20px 10px;
   box-sizing: border-box;
 }
 
@@ -11007,8 +11013,12 @@ Author: Alicia Liu
   padding: 0 10px;
 }
 
+.category {
+  margin: 10px 0;
+}
+
 .category__item {
-  background-color: #ffefd5;
+  background-color: #dcdcdc;
   padding: 0.3rem;
   margin: 0.3rem;
 }
