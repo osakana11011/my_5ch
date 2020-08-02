@@ -45,11 +45,4 @@
             <input type="submit" class="btn btn-primary" value="書き込む">
         </form>
     </div>
-
-    {{-- <form action="{{ route('threads.res.store', $thread->id->value) }}" method="POST">
-        @csrf
-        <input name="submitter_name" type="text" placeholder="名前(省略可)"><br>
-        <textarea name="content" type="text" placeholder="内容" rows="3" cols="30"></textarea><br>
-        <input type="submit" value="書き込む">
-    </form> --}}
 @endsection
