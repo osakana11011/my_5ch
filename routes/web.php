@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
