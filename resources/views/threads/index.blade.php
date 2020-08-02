@@ -10,11 +10,11 @@
                 <hr>
                 <div class="thread-panel__content">{{ $thread->resList[0]->content->value }}</div>
                 <div class="thread-panel__meta">
-                    <span class="thread-panel__meta--item">{{ $thread->resList[0]->submitterName->getName() }}</span>
-                    <span class="thread-panel__meta--item">{{ $thread->resList[0]->getFormattedPostedAt() }}</span>
+                    <span class="thread-panel__meta--item"><i class="fa fa-comment" aria-hidden="true"></i> {{ count($thread->resList) }}</span>
                 </div>
                 <div class="thread-panel__meta">
-                    <span class="thread-panel__meta--item"><i class="fa fa-comment" aria-hidden="true"></i> {{ count($thread->resList) }}</span>
+                    <span class="thread-panel__meta--item">{{ $thread->resList[0]->submitterName->getName() }}</span>
+                    <span class="thread-panel__meta--item">{{ $thread->resList[0]->getFormattedPostedAt() }}</span>
                 </div>
             </div>
         </a>
