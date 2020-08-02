@@ -56,7 +56,7 @@ final class ThreadService
      *
      * @param string $threadTitle
      */
-    public function createThread(string $threadTitle, string $categories): void
+    public function createThread(string $threadTitle, string $categories): Thread
     {
         // スレッドの作成
         $threadTitle = new ThreadTitle($threadTitle);
@@ -70,5 +70,7 @@ final class ThreadService
                 $category = $this->categoryService->createCategory($categoryName);
                 $this->categoryRepository->associate($thread->id, $category->id);
             });
+
+        return $thread;
     }
 }

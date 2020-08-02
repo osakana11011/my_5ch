@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Domain\Services\ThreadService;
+use App\Domain\Services\ResService;
 use App\Http\Requests\ThreadRequest;
 
 
 class ThreadController extends Controller
 {
     private $threadService;
+    private $resService;
 
-    public function __construct(ThreadService $threadService)
+    public function __construct(ThreadService $threadService, ResService $resService)
     {
         $this->threadService = $threadService;
+        $this->resService = $resService;
     }
 
     /**
@@ -37,9 +40,15 @@ class ThreadController extends Controller
      */
     public function store(ThreadRequest $request)
     {
-        $this->threadService->createThread(
+        $thread = $this->threadService->createThread(
             $request->input('title'),
             $request->input('categories') ?? ''
+        );
+
+        $this->resService->createRes(
+            $thread->id->value,
+            $request->input('submitter_name'),
+            $request->input('content')
         );
 
         return redirect('threads');
