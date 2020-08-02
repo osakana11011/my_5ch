@@ -17,7 +17,7 @@ class CreateResponsesTable extends Migration
             $table->id();
             $table->unsignedInteger('thread_id')->nullable(false)->comment('レスが付けられたスレッドID');
             $table->string('submitter_name')->nullable(true)->comment('レスの投稿者名(空の場合、デフォルト名が表示される。)');
-            $table->string('content')->nullable(false)->comment('レスの内容');
+            $table->string('content', 3000)->nullable(false)->comment('レスの内容');
             $table->timestamps();
         });
     }

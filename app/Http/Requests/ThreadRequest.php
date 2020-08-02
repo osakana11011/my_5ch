@@ -26,7 +26,7 @@ class ThreadRequest extends FormRequest
         return [
             'title' => 'required|max:100',
             'submitter_name' => 'max:30',
-            'content' => 'required|max:200',
+            'content' => 'required|max:3000',
         ];
     }
 }

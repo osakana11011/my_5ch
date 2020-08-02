@@ -30,7 +30,7 @@
 
         <div class="form-group create-form__item">
             <label class="create-form__title required">投稿内容</label>
-            <textarea name="content" type="text" placeholder="内容(200文字以内)" rows="3" cols="30" class="form-control @error('content') is-invalid @enderror" maxlength="200"></textarea>
+            <textarea name="content" type="text" placeholder="内容(3000文字以内)" rows="3" cols="30" class="form-control @error('content') is-invalid @enderror" maxlength="200"></textarea>
             @error('content')
                 <div class="invalid-feedback">{{ $errors->first('content') }}</div>
             @enderror

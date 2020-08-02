@@ -16,7 +16,7 @@ final class ResContent
 
     public function __construct(string $content)
     {
-        if (empty($content) || mb_strlen($content) > 200) {
+        if (empty($content) || mb_strlen($content) > 3000) {
             throw new Exception("content: ${content} is invalidate.");
         }
 
