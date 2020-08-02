@@ -1,0 +1,113 @@
+.required {
+    &::after {
+        content: '*';
+        color: #dc143c;
+    }
+}
+
+.caution {
+    border: 1px solid #dc143c;
+    border-radius: 5px;
+    padding: 1.0rem;
+    background-color: #ffe4e1;
+    font-weight: bold;
+}
+
+.thread-title {
+    font-weight: bold;
+    font-size: 1.2rem;
+    word-break : break-all;
+}
+
+.create-form {
+    margin: 0 auto;
+    padding: 1.0rem;
+    background: #fff;
+
+    &__item {
+        margin: 10px 0;
+    }
+
+    &__title {
+        font-weight: bold;
+
+    }
+}
+
+.res {
+    background-color: #fff;
+    padding: 10px;
+    margin: 20px 10px;
+    box-sizing: border-box;
+
+    &__header {
+        font-weight: bold;
+    }
+
+    &__content {
+        padding: 0 10px;
+    }
+}
+
+.category {
+    margin: 10px 0;
+    &__item {
+        background-color: #dcdcdc;
+        padding: 0.3rem;
+        margin: 0.3rem;
+    }
+}
+
+.thread-panel {
+    background-color: #fff;
+    padding: 1.0rem;
+    margin: 30px auto;
+    border-radius: 5px;
+
+    &__link {
+        color: #222;
+        text-decoration: none;
+        &:hover {
+            color: #222;
+            text-decoration: none;
+        }
+    }
+    &__title {
+        font-weight: bold;
+        font-size: 1.2rem;
+    }
+    &__content {
+        padding: 0.2rem 0;
+    }
+    &__meta {
+        display: flex;
+        justify-content: flex-end;
+        &--item {
+            margin-left: 10px;
+        }
+    }
+}
+
+.search-box {
+    margin: 10px auto;
+    display: flex;
+    justify-content: flex-end;
+    &__form {
+        position: relative;
+        height: calc(1.6em + 0.75rem + 2px);
+    }
+    &__input {
+        position: absolute;
+        padding-right: 50px;
+        right: 0;
+        @include mq('pc') {
+            width: 400px;
+        }
+    }
+    &__icon {
+        color: #555;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+}

@@ -13,6 +13,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+if (env('APP_ENV') === 'production') {
+    URL::forceScheme('https');
+}
+
+Auth::routes();
+
 Route::get('/', function () {
-    return view('welcome');
+    return redirect(route('threads'));
 });
+
+Route::get('/threads', 'ThreadController@index')->name('threads');
+Route::get('/threads/create', 'ThreadController@create')->name('threads.create');
+Route::post('/threads', 'ThreadController@store')->name('threads.store');
+Route::get('/threads/{id}', 'ThreadController@show')->name('threads.show');
+
+Route::post('/threads/{id}/res', 'ResController@store')->name('threads.res.store');
