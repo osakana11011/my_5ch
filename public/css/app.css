@@ -17167,3 +17167,24 @@ Author: Alicia Liu
   margin-left: 10px;
 }
 
+.search-box {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.search-box__form {
+  position: relative;
+}
+
+.search-box__input {
+  width: 400px;
+  padding-right: 50px;
+}
+
+.search-box__icon {
+  color: #555;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
