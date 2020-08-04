@@ -20,7 +20,7 @@ final class ResRepository implements IResRepository
         return PersistantResponse::where('thread_id', $id)
             ->get()
             ->map(function ($responseRecord) {
-                return $this->translatePersistantToDomainModel($responseRecord);
+                return self::translatePersistantToDomainModel($responseRecord);
             })
             ->toArray();
     }
@@ -40,7 +40,7 @@ final class ResRepository implements IResRepository
      * @param PersistantRes $threadRecord
      * @return Res
      */
-    private function translatePersistantToDomainModel(PersistantResponse $responseRecord): Res
+    public static function translatePersistantToDomainModel(PersistantResponse $responseRecord): Res
     {
         return new Res(
             new ThreadID($responseRecord->thread_id),
