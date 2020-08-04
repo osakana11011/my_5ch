@@ -83,4 +83,23 @@ final class ThreadService
 
         return $thread;
     }
+
+    /**
+     * スレッド/レスの横断検索を行う。
+     *
+     * @param string $q
+     * @return array
+     */
+    public function crossingSearch(string $q): array
+    {
+        // スレッド・レスの横断検索
+        // NOTE: 横断検索なのにThreadRepositoryのメソッドに実装しているのは違和感がある。
+        $threads = $this->threadRepository->search($q);
+        return collect($threads)
+            ->map(function ($thread) {
+                $thread->categoryList = $this->categoryRepository->getByThreadID($thread->id);
+                return $thread;
+            })
+            ->toArray();
+    }
 }

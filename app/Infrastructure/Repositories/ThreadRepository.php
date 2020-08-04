@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\Repositries;
 
 use App\Infrastructure\Database\Thread as PersistantThread;
+use App\Infrastructure\Repositries\ResRepository;
 use App\Domain\Models\Entities\Thread;
 use App\Domain\Models\ValueObject\Thread\ThreadID;
 use App\Domain\Models\ValueObject\Thread\ThreadTitle;
@@ -21,7 +22,7 @@ final class ThreadRepository implements IThreadRepository
     {
         $threadRecords = PersistantThread::get();
         return $threadRecords->map(function ($threadRecord) {
-            return $this->translatePersistantToDomainModel($threadRecord);
+            return self::translatePersistantToDomainModel($threadRecord);
         })->toArray();
     }
 
@@ -34,7 +35,7 @@ final class ThreadRepository implements IThreadRepository
     public function getByID(ThreadID $threadID): Thread
     {
         $threadRecord = PersistantThread::find($threadID->value);
-        return $this->translatePersistantToDomainModel($threadRecord);
+        return self::translatePersistantToDomainModel($threadRecord);
     }
 
     /**
@@ -49,7 +50,21 @@ final class ThreadRepository implements IThreadRepository
             'title' => $threadTitle->value,
         ]);
 
-        return $this->translatePersistantToDomainModel($threadRecord);
+        return self::translatePersistantToDomainModel($threadRecord);
+    }
+
+    /**
+     * スレッドの検索を行う。
+     *
+     * @param
+     */
+    public function search(string $q): array
+    {
+        return PersistantThread::search($q)
+            ->map(function ($thread) {
+                return self::translatePersistantToDomainModel($thread);
+            })
+            ->toArray();
     }
 
     /**
@@ -58,12 +73,21 @@ final class ThreadRepository implements IThreadRepository
      * @param PersistantThread $threadRecord
      * @return Thread
      */
-    private function translatePersistantToDomainModel(PersistantThread $threadRecord): Thread
+    public static function translatePersistantToDomainModel(PersistantThread $threadRecord): Thread
     {
         $id = !empty($threadRecord->id) ? new ThreadID($threadRecord->id) : null;
         $title = !empty($threadRecord->title) ? new ThreadTitle($threadRecord->title) : null;
         $parentThreadID = !empty($threadRecord->parent_thread_id) ? new ThreadID($threadRecord->parent_thread_id) : null;
+        $thread = new Thread($title, $id, $parentThreadID);
 
-        return new Thread($title, $id, $parentThreadID);
+        if (!empty($threadRecord->resList)) {
+            $thread->resList = $threadRecord->resList
+                ->map(function ($response) {
+                    return ResRepository::translatePersistantToDomainModel($response);
+                })
+                ->toArray();
+        }
+
+        return $thread;
     }
 }

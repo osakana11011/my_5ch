@@ -2,13 +2,15 @@
 
 @section('content')
     @auth
-        <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+        <div class="create-thread">
+            <a href="{{ route('threads.create') }}"><button class="btn btn-primary">スレッドを作成する</button></a>
+        </div>
     @endauth
 
     <div class="search-box">
-        <form action="{{ route('threads') }}" style="width: 100%;">
+        <form action="{{ route('threads.search') }}" style="width: 100%;" method="GET">
             <div class="search-box__form">
-                <input name="q" type="text" class="form-control search-box__input" placeholder="検索未実装">
+                <input name="q" type="text" class="form-control search-box__input" placeholder="検索キーワード">
                 <i class="fa fa-search search-box__icon" aria-hidden="true"></i>
             </div>
         </form>

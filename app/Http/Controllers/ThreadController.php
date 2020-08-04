@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Domain\Services\ThreadService;
 use App\Domain\Services\ResService;
 use App\Http\Requests\ThreadRequest;
+use Illuminate\Http\Request;
 
 
 class ThreadController extends Controller
@@ -61,5 +62,22 @@ class ThreadController extends Controller
     {
         $thread = $this->threadService->getByID($id);
         return view('threads.show', compact('thread'));
+    }
+
+    /**
+     * スレッドとレスの横断検索を行う
+     */
+    public function crossingSearch(Request $request)
+    {
+        // 検索助件が空の時、スレッド一覧画面へ飛ばす。
+        $q = $request->input('q');
+        if (empty($q)) {
+            return redirect(route('threads'));
+        }
+
+        // スレッドとレスを横断検索
+        $threads = $this->threadService->crossingSearch($q);
+
+        return view('threads.search', compact('q', 'threads'));
     }
 }

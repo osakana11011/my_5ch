@@ -5,6 +5,11 @@
     }
 }
 
+.create-thread {
+    display: flex;
+    justify-content: flex-end;
+}
+
 .caution {
     border: 1px solid #dc143c;
     border-radius: 5px;
@@ -110,4 +115,8 @@
         right: 10px;
         top: 10px;
     }
+}
+
+.search-res {
+    padding: 0 1.0rem;
 }
